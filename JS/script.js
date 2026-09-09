@@ -1,6 +1,7 @@
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.global-nav');
 const siteHeader = document.querySelector('.site-header');
+const faqButtons = document.querySelectorAll('.faq-question');
 
 if (siteHeader) {
   const updateHeaderShadow = () => {
@@ -35,3 +36,16 @@ if (menuButton && nav) {
     }
   });
 }
+
+faqButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.faq-item');
+    const answer = document.getElementById(button.getAttribute('aria-controls'));
+    const open = item.classList.toggle('is-open');
+
+    button.setAttribute('aria-expanded', String(open));
+    if (answer) {
+      answer.setAttribute('aria-hidden', String(!open));
+    }
+  });
+});

@@ -462,6 +462,129 @@ img {
   object-fit: cover
 }
 
+.faq-section {
+  margin-top: 28px
+}
+
+.faq-category + .faq-category {
+  margin-top: 32px
+}
+
+.faq-category-title {
+  margin: 0 0 12px;
+  color: var(--green-dark);
+  font-size: 18px;
+  line-height: 1.4
+}
+
+.faq-list {
+  border-top: 1px solid var(--line)
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 0
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 0;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease
+}
+
+.faq-question:hover,
+.faq-question:focus-visible {
+  background: #f8fbf8;
+  color: var(--green-dark)
+}
+
+.faq-question:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: -2px
+}
+
+.faq-icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  border: 2px solid var(--green);
+  border-radius: 50%
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 4px;
+  width: 6px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--green-dark);
+  transition: transform .25s ease, opacity .25s ease
+}
+
+.faq-icon::after {
+  transform: rotate(90deg)
+}
+
+.faq-item.is-open .faq-icon::after {
+  transform: rotate(90deg) scaleX(0);
+  opacity: 0
+}
+
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  background: #fff;
+  transition: grid-template-rows .25s ease
+}
+
+.faq-answer-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  color: var(--muted)
+}
+
+.faq-item.is-open .faq-answer {
+  grid-template-rows: 1fr
+}
+
+.faq-item.is-open .faq-answer-inner {
+  padding-bottom: 18px
+}
+
+.faq-answer-inner p {
+  margin: 0 0 6px
+}
+
+.faq-answer-inner p:last-child {
+  margin-bottom: 0
+}
+
+.faq-answer-inner ul {
+  margin: 0 0 6px;
+  padding-left: 20px
+}
+
+.faq-answer-inner ul + p {
+  margin-top: 0
+}
+
 .site-footer {
   border-top: 1px solid #dcebdc;
   background: var(--green-soft);
@@ -686,6 +809,18 @@ img {
 
   .access-section {
     gap: 26px
+  }
+
+  .faq-question {
+    padding: 16px
+  }
+
+  .faq-answer-inner {
+    padding-inline: 16px
+  }
+
+  .faq-item.is-open .faq-answer-inner {
+    padding-bottom: 16px
   }
 
   .footer-inner {
