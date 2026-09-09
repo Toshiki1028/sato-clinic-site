@@ -1,5 +1,15 @@
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.global-nav');
+const siteHeader = document.querySelector('.site-header');
+
+if (siteHeader) {
+  const updateHeaderShadow = () => {
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 0);
+  };
+
+  window.addEventListener('scroll', updateHeaderShadow, { passive: true });
+  updateHeaderShadow();
+}
 
 if (menuButton && nav) {
   menuButton.addEventListener('click', () => {
