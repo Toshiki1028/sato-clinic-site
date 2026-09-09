@@ -117,15 +117,64 @@ img {
   background: var(--green-dark)
 }
 
+.global-nav .mobile-contact {
+  display: none
+}
+
 .menu-toggle {
   display: none;
   margin-left: auto;
   border: 1px solid var(--green);
   background: #fff;
   color: var(--green-dark);
-  padding: 8px 12px;
+  padding: 9px 12px;
   border-radius: 4px;
-  font-weight: 700
+  font-weight: 700;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer
+}
+
+.menu-icon {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 14px;
+  flex: 0 0 20px
+}
+
+.menu-icon span {
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform .2s ease, opacity .2s ease
+}
+
+.menu-icon span:nth-child(1) {
+  top: 0
+}
+
+.menu-icon span:nth-child(2) {
+  top: 6px
+}
+
+.menu-icon span:nth-child(3) {
+  top: 12px
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg)
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(2) {
+  opacity: 0
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg)
 }
 
 .hero {
@@ -459,7 +508,7 @@ img {
   }
 
   .menu-toggle {
-    display: block
+    display: inline-flex
   }
 
   .global-nav {
@@ -468,10 +517,11 @@ img {
     right: 0;
     top: 64px;
     height: auto;
-    background: #fff;
+    background: var(--green-soft);
     display: none;
     flex-direction: column;
-    border-bottom: 1px solid var(--line)
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 8px 18px rgba(35, 123, 72, .08)
   }
 
   .global-nav.open {
@@ -481,7 +531,24 @@ img {
   .global-nav a {
     padding: 14px 24px;
     justify-content: flex-start;
-    border-top: 1px solid #f0f0f0
+    border-top: 1px solid #e5eee6;
+    background: #fff
+  }
+
+  .global-nav .mobile-contact {
+    display: flex;
+    justify-content: center;
+    margin: 12px 16px 16px;
+    padding: 12px 20px;
+    border-top: 0;
+    border-radius: 999px;
+    background: var(--green);
+    color: #fff
+  }
+
+  .global-nav .mobile-contact:hover {
+    background: var(--green-dark);
+    color: #fff
   }
 
   .contact-button {
