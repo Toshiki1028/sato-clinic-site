@@ -392,6 +392,10 @@ img {
   object-fit: cover
 }
 
+.director-section .split-image {
+  margin: 12px
+}
+
 .services-section {
   padding-bottom: 30px
 }
