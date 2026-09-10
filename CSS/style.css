@@ -1304,6 +1304,104 @@ img {
   }
 }
 
+.faq-category-links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.faq-section {
+  padding-block: 40px
+}
+
+.faq-section .section-title {
+  margin-bottom: 20px
+}
+
+.faq-category-link {
+  position: relative;
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 16px 40px 16px 16px;
+  border: 1px solid #d8ebdd;
+  border-radius: 11px;
+  background: #fff;
+  color: #2f6f4e;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  transition: background-color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease
+}
+
+.faq-category-link::after {
+  content: "→";
+  position: absolute;
+  right: 14px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #effbea;
+  color: var(--green);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform .25s ease
+}
+
+.faq-category-link:focus-visible {
+  outline: 3px solid rgba(57, 168, 102, .32);
+  outline-offset: 3px
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .faq-category-link:hover {
+    border-color: #9bcaaa;
+    background: #f7fcf8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(35, 123, 72, .05)
+  }
+
+  .faq-category-link:hover::after {
+    transform: translateX(2px)
+  }
+}
+
+.faq-page .faq-category-title {
+  scroll-margin-top: var(--scroll-offset)
+}
+
+@media (max-width:720px) {
+  .faq-section {
+    padding-block: 32px
+  }
+
+  .faq-section .section-title {
+    margin-bottom: 18px
+  }
+
+  .faq-category-links {
+    grid-template-columns: 1fr;
+    gap: 12px
+  }
+
+  .faq-category-link {
+    min-height: 76px;
+    padding: 14px 38px 14px 16px;
+    font-size: 17px
+  }
+
+  .faq-category-link::after {
+    right: 12px
+  }
+}
+
 .contact-page .contact-section {
   max-width: 960px;
   margin-inline: auto

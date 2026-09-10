@@ -74,6 +74,30 @@ faqButtons.forEach((button) => {
   });
 });
 
+const faqHashTarget = document.getElementById(window.location.hash.slice(1));
+
+if (faqHashTarget && faqHashTarget.classList.contains('faq-category-title')) {
+  const faqCategory = faqHashTarget.closest('.faq-category');
+  const firstQuestion = faqCategory ? faqCategory.querySelector('.faq-question') : null;
+  const firstItem = firstQuestion ? firstQuestion.closest('.faq-item') : null;
+  const firstAnswer = firstQuestion
+    ? document.getElementById(firstQuestion.getAttribute('aria-controls'))
+    : null;
+
+  if (firstQuestion && firstItem) {
+    firstItem.classList.add('is-open');
+    firstQuestion.setAttribute('aria-expanded', 'true');
+    if (firstAnswer) {
+      firstAnswer.setAttribute('aria-hidden', 'false');
+    }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.setTimeout(() => {
+      faqHashTarget.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    }, 0);
+  }
+}
+
 if (revealImages.length) {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
