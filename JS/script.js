@@ -2,6 +2,9 @@ const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.global-nav');
 const siteHeader = document.querySelector('.site-header');
 const faqButtons = document.querySelectorAll('.faq-question');
+const revealImages = document.querySelectorAll(
+  '.hero > img, .split-image img, .about-section img, .service-row img, .staff-row img, .hospital-visual img, .map-link img'
+);
 
 if (siteHeader) {
   const updateHeaderShadow = () => {
@@ -49,3 +52,27 @@ faqButtons.forEach((button) => {
     }
   });
 });
+
+if (revealImages.length) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealImages.forEach((image) => {
+      image.classList.add('image-reveal', 'is-visible');
+    });
+  } else {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealImages.forEach((image) => {
+      image.classList.add('image-reveal');
+      imageObserver.observe(image);
+    });
+  }
+}

@@ -46,6 +46,26 @@ img {
   max-width: 100%
 }
 
+.image-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .6s ease, transform .6s ease
+}
+
+.image-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0)
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-reveal,
+  .image-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none
+  }
+}
+
 .page-width {
   width: min(var(--max), calc(100% - 48px));
   margin-inline: auto
