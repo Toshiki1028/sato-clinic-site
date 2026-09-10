@@ -19,7 +19,11 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 73px
+}
+
+#top,
+main section[id] {
+  scroll-margin-top: 73px
 }
 
 body {
@@ -664,8 +668,9 @@ img {
 }
 
 @media (max-width:980px) {
-  html {
-    scroll-padding-top: 65px
+  #top,
+  main section[id] {
+    scroll-margin-top: 65px
   }
 
   body {
