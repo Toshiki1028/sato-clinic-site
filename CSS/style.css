@@ -598,7 +598,7 @@ img {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 150px minmax(0, 1fr) 150px;
   gap: 18px 32px;
   align-items: center
 }
@@ -609,14 +609,20 @@ img {
 
 .footer-nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 18px;
+  gap: 12px 24px;
   flex-wrap: wrap;
   font-size: 12px;
   font-weight: 700;
   color: var(--green-text);
   width: 100%;
+  text-align: center;
+}
+
+.footer-nav a {
+  text-align: center;
+  white-space: nowrap;
 }
 
 .footer-nav a:hover {
