@@ -7,6 +7,25 @@ const revealImages = document.querySelectorAll(
 );
 const emailContactButton = document.querySelector('.contact-choice-email');
 const emailContactForm = document.querySelector('#email-form');
+const backToTopButton = document.createElement('button');
+
+backToTopButton.type = 'button';
+backToTopButton.className = 'back-to-top';
+backToTopButton.setAttribute('aria-label', 'ページ上部へ戻る');
+backToTopButton.textContent = '↑';
+document.body.append(backToTopButton);
+
+const updateBackToTopButton = () => {
+  backToTopButton.classList.toggle('is-visible', window.scrollY > 320);
+};
+
+window.addEventListener('scroll', updateBackToTopButton, { passive: true });
+updateBackToTopButton();
+
+backToTopButton.addEventListener('click', () => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+});
 
 if (siteHeader) {
   const updateHeaderShadow = () => {
@@ -83,7 +102,8 @@ if (emailContactButton && emailContactForm) {
   emailContactButton.addEventListener('click', () => {
     emailContactForm.hidden = false;
     emailContactButton.setAttribute('aria-expanded', 'true');
-    emailContactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    emailContactForm.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
 
     const firstField = emailContactForm.querySelector('input');
     if (firstField) {
