@@ -966,39 +966,71 @@ img {
 }
 
 .news-article {
-  padding: 26px 0;
   border-bottom: 1px solid var(--line)
-}
-
-.news-article:first-child {
-  padding-top: 0
 }
 
 .news-article:last-child {
   border-bottom: 0
 }
 
-.news-article-header {
-  display: flex;
-  align-items: baseline;
-  gap: 24px
+.news-summary {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr) 110px;
+  align-items: center;
+  gap: 24px;
+  padding: 26px 0;
+  cursor: pointer;
+  list-style: none
 }
 
-.news-article-header time {
-  flex: 0 0 100px;
+.news-summary::-webkit-details-marker {
+  display: none
+}
+
+.news-summary time {
   color: var(--muted);
   font-size: 13px
 }
 
-.news-article h2 {
-  margin: 0;
+.news-article-title {
   color: var(--green-dark);
   font-size: 20px;
+  font-weight: 700;
   line-height: 1.5
 }
 
-.news-article p {
-  margin: 12px 0 0 124px
+.news-detail-link {
+  justify-self: end;
+  color: var(--green-dark);
+  font-size: 13px;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 4px;
+  white-space: nowrap
+}
+
+.news-detail-body {
+  padding: 0 110px 26px 124px;
+  color: var(--muted)
+}
+
+.news-detail-body p {
+  margin: 0
+}
+
+.news-detail[open] .news-detail-link {
+  color: var(--green)
+}
+
+.news-summary:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: -2px
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .news-summary:hover .news-detail-link {
+    color: var(--green)
+  }
 }
 
 .service-page .service-row:last-child {
@@ -1131,17 +1163,28 @@ img {
     padding-top: 36px
   }
 
-  .news-article-header {
-    display: block
+  .news-summary {
+    grid-template-columns: 1fr auto;
+    gap: 6px 16px;
+    padding: 18px 0
   }
 
-  .news-article-header time {
-    display: block;
-    margin-bottom: 4px
+  .news-summary time {
+    grid-column: 1/-1;
+    font-size: 12px
   }
 
-  .news-article p {
-    margin-left: 0
+  .news-article-title {
+    font-size: 18px
+  }
+
+  .news-detail-link {
+    grid-column: 2;
+    grid-row: 2
+  }
+
+  .news-detail-body {
+    padding: 0 0 18px
   }
 
   .about-points,
