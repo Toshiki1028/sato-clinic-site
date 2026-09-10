@@ -357,12 +357,13 @@ img {
 
 .news-list a {
   display: grid;
-  grid-template-columns: 150px 1fr 120px;
+  grid-template-columns: 150px minmax(0, 1fr) 140px;
   align-items: center;
-  gap: 20px;
-  padding: 14px 10px;
+  gap: 24px;
+  min-height: 72px;
+  padding: 16px 10px;
   border-bottom: 1px solid var(--line);
-  font-size: 14px
+  font-size: 18px
 }
 
 .news-list a:hover {
@@ -372,10 +373,25 @@ img {
 .news-list em {
   justify-self: end;
   color: var(--green-dark);
+  font-size: 16px;
   font-style: normal;
   text-decoration: underline;
   text-decoration-style: dashed;
   text-underline-offset: 4px
+}
+
+.news-list time {
+  color: var(--muted);
+  font-size: 16px;
+  white-space: nowrap
+}
+
+.news-list span {
+  text-align: center
+}
+
+.news-article {
+  scroll-margin-top: var(--scroll-offset)
 }
 
 .section-action {
@@ -850,20 +866,28 @@ img {
   }
 
   .news-list a {
-    grid-template-columns: 1fr 95px;
-    gap: 6px 14px;
-    padding: 13px 4px
+    grid-template-columns: 1fr;
+    gap: 6px;
+    min-height: 0;
+    padding: 14px 4px
   }
 
   .news-list time {
-    grid-column: 1/-1;
-    font-size: 12px;
-    color: var(--muted)
+    grid-column: auto;
+    font-size: 16px
+  }
+
+  .news-list span {
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.5
   }
 
   .news-list em {
-    grid-column: 2;
-    grid-row: 2
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: start;
+    font-size: 16px
   }
 
   .section-action {

@@ -98,6 +98,21 @@ if (faqHashTarget && faqHashTarget.classList.contains('faq-category-title')) {
   }
 }
 
+const newsHashTarget = document.getElementById(window.location.hash.slice(1));
+
+if (newsHashTarget && newsHashTarget.classList.contains('news-article')) {
+  const newsDetail = newsHashTarget.querySelector('.news-detail');
+
+  if (newsDetail) {
+    newsDetail.open = true;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.setTimeout(() => {
+      newsHashTarget.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    }, 0);
+  }
+}
+
 if (revealImages.length) {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
