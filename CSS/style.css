@@ -46,6 +46,20 @@ img {
   max-width: 100%
 }
 
+.hero > img,
+.split-image img,
+.about-section img,
+.service-row img,
+.staff-row img,
+.hospital-visual img,
+.map-link img {
+  border-radius: 16px
+}
+
+.map-link img {
+  border-radius: 12px
+}
+
 .image-reveal {
   opacity: 0;
   transform: translateY(12px);
